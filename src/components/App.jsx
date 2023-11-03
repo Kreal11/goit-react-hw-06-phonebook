@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { AddContact } from './AddContact/AddContact';
 import { AllContacts } from './AllContacts/AllContacts';
 import { SearchContacts } from './SearchContact/SearchContact';
-import { toast } from 'react-toastify';
 import styled from 'styled-components';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
+  const [contacts] = useState(
     () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
   );
   const [filter, setFilter] = useState('');
@@ -14,30 +13,6 @@ export const App = () => {
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  const handleAddNewContact = newData => {
-    const newContact = {
-      id: crypto.randomUUID(),
-      position: 'default',
-      ...newData,
-    };
-
-    const existingContact = contacts.some(
-      contact =>
-        contact.name.toLowerCase().trim() ===
-        newContact.name.toLowerCase().trim()
-    );
-    const existingNameWithoutSpace = contacts.some(
-      contact =>
-        contact.name.toLowerCase().replace(' ', '').trim() ===
-        newContact.name.toLowerCase().replace(' ', '').trim()
-    );
-    if (existingContact || existingNameWithoutSpace) {
-      return toast.warning(`${newContact.name} is already in contacts`);
-    } else {
-      setContacts(prev => [...prev, { ...newContact }]);
-    }
-  };
 
   const handleSeacrhContact = () => {
     return contacts.filter(contact =>
@@ -65,7 +40,7 @@ export const App = () => {
     >
       <StyledHeaderH1>PHONEBOOK</StyledHeaderH1>
       <div>
-        <AddContact addContact={handleAddNewContact} />
+        <AddContact />
 
         <SearchContacts name={contacts.name} changeFilter={handlChangeFilter} />
         {!contacts.length ? (
