@@ -29,8 +29,7 @@ export const AddContact = () => {
       return toast.warning(`${name} is already in contacts`);
     }
     if (!parseInt(number)) {
-      toast.warning('Please, enter numbers for the phone form');
-      return;
+      return toast.warning('Please, enter numbers for the phone form');
     }
     dispatch(addContact(name, number));
   };
@@ -59,11 +58,7 @@ export const AddContact = () => {
             required
           />
         </StyledAddContactInputWrapper>
-        <StyledAddContactButton
-        // disabled={!name || !name.trim() || !number || !number.trim()}
-        >
-          Add Contact
-        </StyledAddContactButton>
+        <StyledAddContactButton>Add Contact</StyledAddContactButton>
       </StyledAddContactForm>
     </div>
   );
