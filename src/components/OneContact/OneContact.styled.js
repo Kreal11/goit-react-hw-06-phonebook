@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledOneContactLi = styled.li`
+  padding: 20px 10px 10px;
   background: linear-gradient(
     to bottom,
     rgb(227, 213, 255),
@@ -12,6 +13,7 @@ export const StyledOneContactLi = styled.li`
   min-height: 90px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `;
 
 export const OneContactDeleteButton = styled.button`
