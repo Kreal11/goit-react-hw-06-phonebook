@@ -7,6 +7,7 @@ const initialState = {
     { name: 'Kyrylo', number: '357-10-11', id: 3 },
     { name: 'Ribona', number: '357-03-20', id: 4 },
   ],
+  filter: '',
 };
 
 export const contactsReducer = (state = initialState, action) => {
