@@ -4,12 +4,8 @@ import { AllContacts } from './AllContacts/AllContacts';
 import { SearchContacts } from './SearchContact/SearchContact';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import { deleteContact } from 'redux/actions';
-import { useDispatch } from 'react-redux';
 
 export const App = () => {
-  const dispatch = useDispatch();
-
   const [contacts, setContacts] = useState(
     () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
   );
@@ -43,10 +39,6 @@ export const App = () => {
     }
   };
 
-  // const handleDeleteContact = id => {
-  //   setContacts(prev => prev.filter(contact => contact.id !== id));
-  // };
-
   const handleSeacrhContact = () => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -79,10 +71,7 @@ export const App = () => {
         {!contacts.length ? (
           <StyledPlug>There are no contacts yet😭</StyledPlug>
         ) : (
-          <AllContacts
-            dataContacts={filteredContact}
-            deleteContact={dispatch(deleteContact)}
-          />
+          <AllContacts dataContacts={filteredContact} />
         )}
       </div>
     </div>

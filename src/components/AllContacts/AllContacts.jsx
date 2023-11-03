@@ -1,17 +1,22 @@
 import { OneContact } from 'components/OneContact/OneContact';
 
 import { StyledAllContactsUl } from './AllContacts.styled';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/actions';
+import { selectContacts } from 'redux/selectors';
 
-export const AllContacts = ({ deleteContact, dataContacts }) => {
+export const AllContacts = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
   return (
     <StyledAllContactsUl>
-      {dataContacts?.map(contact => {
+      {contacts?.map(contact => {
         return (
           <OneContact
             key={contact.id}
             {...contact}
-            deleteContact={deleteContact}
+            deleteContact={() => dispatch(deleteContact(contact.id))}
           />
         );
       })}
@@ -19,13 +24,13 @@ export const AllContacts = ({ deleteContact, dataContacts }) => {
   );
 };
 
-AllContacts.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
-  dataContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+// AllContacts.propTypes = {
+//   deleteContact: PropTypes.func.isRequired,
+//   dataContacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };

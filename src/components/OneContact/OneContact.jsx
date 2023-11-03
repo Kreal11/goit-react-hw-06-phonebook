@@ -17,7 +17,7 @@ export const OneContact = ({ id, name, number, deleteContact }) => {
 };
 
 OneContact.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   deleteContact: PropTypes.func.isRequired,
