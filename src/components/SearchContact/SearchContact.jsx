@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyledSearchWrapper,
   StyledSearchLabel,
@@ -12,7 +12,7 @@ import { filterContacts } from 'redux/actions';
 export const SearchContacts = ({ name }) => {
   const dispatch = useDispatch();
 
-  const handlChangeFilter = e => {
+  const handleChangeFilter = e => {
     return dispatch(filterContacts(e.target.value));
   };
 
@@ -28,7 +28,7 @@ export const SearchContacts = ({ name }) => {
           type="text"
           name="name"
           value={name}
-          onChange={handlChangeFilter}
+          onChange={handleChangeFilter}
         />
       </StyledInputSearchWrapper>
     </StyledSearchWrapper>

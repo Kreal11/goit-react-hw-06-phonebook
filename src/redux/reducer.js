@@ -29,18 +29,9 @@ export const contactsReducer = (state = initialState, action) => {
       };
     }
     case FILTER_CONTACT: {
-      const { filter, contacts } = state;
       return {
         ...state,
         filter: action.payload,
-        contacts: contacts.filter(
-          contact =>
-            contact.name
-              .toLowerCase()
-              .trim()
-              .includes(filter.toLowerCase().trim()) ||
-            contact.number.trim().includes(filter.trim())
-        ),
       };
     }
     default:

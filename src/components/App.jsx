@@ -2,20 +2,11 @@ import { AddContact } from './AddContact/AddContact';
 import { AllContacts } from './AllContacts/AllContacts';
 import { SearchContacts } from './SearchContact/SearchContact';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { filterContacts } from 'redux/actions';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
-
-  // contacts: state.contacts.filter(
-  //   contact =>
-  //     contact.name.toLowerCase().includes(action.payload.toLowerCase()) ||
-  //     contact.number.includes(action.payload)
-  // );
-
-  // const filteredContact = handleSeacrhContact();
 
   return (
     <div
