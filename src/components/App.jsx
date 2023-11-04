@@ -8,17 +8,12 @@ import { filterContacts } from 'redux/actions';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
 
-  // const handleSeacrhContact = () => {
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filter.toLowerCase())
-  //   );
-  // };
-
-  const handlChangeFilter = e => {
-    return dispatch(filterContacts(e.target.value));
-  };
+  // contacts: state.contacts.filter(
+  //   contact =>
+  //     contact.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+  //     contact.number.includes(action.payload)
+  // );
 
   // const filteredContact = handleSeacrhContact();
 
@@ -39,13 +34,12 @@ export const App = () => {
         <AddContact />
 
         <SearchContacts
-          // name={contacts.map(contact => contact.name)}
-          changeFilter={handlChangeFilter}
+        // name={contacts.map(contact => contact.name)}
         />
         {!contacts.length ? (
           <StyledPlug>There are no contacts yet😭</StyledPlug>
         ) : (
-          <AllContacts dataContacts={handlChangeFilter} />
+          <AllContacts />
         )}
       </div>
     </div>

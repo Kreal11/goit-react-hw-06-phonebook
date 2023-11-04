@@ -29,12 +29,17 @@ export const contactsReducer = (state = initialState, action) => {
       };
     }
     case FILTER_CONTACT: {
+      const { filter, contacts } = state;
       return {
         ...state,
-        contacts: state.contacts.filter(
+        filter: action.payload,
+        contacts: contacts.filter(
           contact =>
-            contact.name.toLowerCase().includes(action.payload.toLowerCase()) ||
-            contact.number.includes(action.payload)
+            contact.name
+              .toLowerCase()
+              .trim()
+              .includes(filter.toLowerCase().trim()) ||
+            contact.number.trim().includes(filter.trim())
         ),
       };
     }
