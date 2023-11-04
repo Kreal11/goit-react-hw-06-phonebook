@@ -9,6 +9,8 @@ import { selectContacts } from 'redux/selectors';
 export const AllContacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  // const filter = useSelector(selectFilter);
+
   return (
     <StyledAllContactsUl>
       {contacts?.map(contact => {

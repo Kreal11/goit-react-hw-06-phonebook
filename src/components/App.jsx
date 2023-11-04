@@ -1,30 +1,26 @@
-import { useEffect, useState } from 'react';
 import { AddContact } from './AddContact/AddContact';
 import { AllContacts } from './AllContacts/AllContacts';
 import { SearchContacts } from './SearchContact/SearchContact';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from 'redux/selectors';
+import { filterContacts } from 'redux/actions';
 
 export const App = () => {
-  const [contacts] = useState(
-    () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
-  );
-  const [filter, setFilter] = useState('');
+  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const handleSeacrhContact = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
+  // const handleSeacrhContact = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
+  // };
 
   const handlChangeFilter = e => {
-    setFilter(e.target.value);
+    return dispatch(filterContacts(e.target.value));
   };
 
-  const filteredContact = handleSeacrhContact();
+  // const filteredContact = handleSeacrhContact();
 
   return (
     <div
@@ -42,11 +38,14 @@ export const App = () => {
       <div>
         <AddContact />
 
-        <SearchContacts name={contacts.name} changeFilter={handlChangeFilter} />
+        <SearchContacts
+          // name={contacts.map(contact => contact.name)}
+          changeFilter={handlChangeFilter}
+        />
         {!contacts.length ? (
           <StyledPlug>There are no contacts yet😭</StyledPlug>
         ) : (
-          <AllContacts dataContacts={filteredContact} />
+          <AllContacts dataContacts={handlChangeFilter} />
         )}
       </div>
     </div>

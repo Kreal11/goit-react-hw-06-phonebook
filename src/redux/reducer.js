@@ -1,4 +1,4 @@
-import { ADD_CONTACT, DELETE_CONTACT } from './constants';
+import { ADD_CONTACT, DELETE_CONTACT, FILTER_CONTACT } from './constants';
 
 const initialState = {
   contacts: [
@@ -28,7 +28,16 @@ export const contactsReducer = (state = initialState, action) => {
         contacts: [...state.contacts, action.payload],
       };
     }
-
+    case FILTER_CONTACT: {
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          contact =>
+            contact.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+            contact.number.includes(action.payload)
+        ),
+      };
+    }
     default:
       return state;
   }
