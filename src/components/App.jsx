@@ -23,10 +23,7 @@ export const App = () => {
       <StyledHeaderH1>PHONEBOOK</StyledHeaderH1>
       <div>
         <AddContact />
-
-        <SearchContacts
-        // name={contacts.map(contact => contact.name)}
-        />
+        <SearchContacts />
         {!contacts.length ? (
           <StyledPlug>There are no contacts yet😭</StyledPlug>
         ) : (

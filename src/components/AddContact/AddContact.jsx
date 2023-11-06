@@ -9,7 +9,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addContact } from 'redux/contactsSlice';
-// import { addContact } from 'redux/actions';
 import { selectContacts } from 'redux/selectors';
 
 export const AddContact = () => {
@@ -64,7 +63,3 @@ export const AddContact = () => {
     </div>
   );
 };
-
-// AddContact.propTypes = {
-//   addContact: PropTypes.func.isRequired,
-// };
