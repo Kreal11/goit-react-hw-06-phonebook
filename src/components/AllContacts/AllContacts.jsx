@@ -1,5 +1,4 @@
 import { OneContact } from 'components/OneContact/OneContact';
-
 import { StyledAllContactsUl } from './AllContacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
