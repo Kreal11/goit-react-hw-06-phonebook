@@ -77,7 +77,7 @@ export const StyledAddContactButton = styled.button`
 
   @keyframes pulse512 {
     0% {
-      box-shadow: 0 0 0 0 #05bada66;
+      box-shadow: 0 0 0 0 #cea2fd;
     }
 
     70% {
