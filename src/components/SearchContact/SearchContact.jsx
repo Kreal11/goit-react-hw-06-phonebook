@@ -8,7 +8,6 @@ import {
 } from './SearchContact.styled';
 import PropTypes from 'prop-types';
 import { filterContacts } from 'redux/filterSlice';
-// import { filterContacts } from 'redux/actions';
 
 export const SearchContacts = ({ name }) => {
   const dispatch = useDispatch();

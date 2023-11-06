@@ -9,12 +9,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactsReducer } from './ContactsSlice';
+import { contactsReducer } from './contactsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { filterReducer } from './filterSlice';
-
-const { createStore } = require('redux');
-// const { contactsReducer } = require('./reducer');
 
 const persistConfig = {
   key: 'root',
